@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div class="container">
+        <!-- İlk input alanı -->
+        <div class="form-group">
+          <label for="field">Field</label>
+          <input
+            type="text"
+            id="field"
+            name="field"
+            placeholder="Field Girin"
+          />
+        </div>
+
+        <!-- İkinci input alanı -->
+        <div class="form-group">
+          <label for="label">Label</label>
+          <input
+            type="text"
+            id="label"
+            name="label"
+            placeholder="Label Girin"
+          />
+        </div>
+
+        <button
+          id="createField"
+          class="generateButton"
+          type="button"
+          onclick="generateCode()"
+        >
+          Oluştur
+        </button>
+      </div>
+    </form>
+
+    <div class="options">
+      <label for="validationCheckbox">Validasyon</label>
+      <input
+        type="checkbox"
+        id="validationCheckbox"
+        class="validation-checkbox"
+        checked
+      />
+
+      <div class="radio-group">
+        <div class="radio-item">
+          <label for="stringOption">String</label>
+          <input type="radio" id="stringOption" name="inputType" checked />
+        </div>
+
+        <div class="radio-item">
+          <label for="numberOption">Number</label>
+          <input type="radio" id="numberOption" name="inputType" />
+        </div>
+
+        <div class="radio-item">
+          <label for="dateOption">Date</label>
+          <input type="radio" id="dateOption" name="inputType" />
+        </div>
+
+        <div class="radio-item">
+          <label for="textAreaOption">TextArea</label>
+          <input type="radio" id="textAreaOption" name="inputType" />
+        </div>
+      </div>
+    </div>
+
+    <div class="text-areas">
+      <div class="left-fields">
+        <div class="text-area-group-item">
+          <textarea
+            class="textareaItem"
+            id="item-text"
+            placeholder="dxi-item"
+            spellcheck="false"
+          ></textarea>
+          <button
+            class="copyButton"
+            id="item-text-copyBtn"
+            onclick="copyText('item-text')"
+          >
+            Kopyala
+          </button>
+        </div>
+        <div class="text-area-group-lookup">
+          <textarea
+            class="textareaLookup"
+            id="lookup-text"
+            placeholder="lookup"
+            spellcheck="false"
+          ></textarea>
+          <button
+            class="copyButton"
+            id="lookup-text-copyBtn"
+            onclick="copyText('lookup-text')"
+          >
+            Kopyala
+          </button>
+        </div>
+      </div>
+      <div class="right-fields">
+        <div class="text-area-group-controller">
+          <textarea
+            class="textareaController"
+            id="controller-text"
+            placeholder="gen control"
+            spellcheck="false"
+          ></textarea>
+          <button
+          class="copyButton"
+          id="controller-text-copyBtn"
+          onclick="copyText('controller-text')"
+        >
+          Kopyala
+        </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

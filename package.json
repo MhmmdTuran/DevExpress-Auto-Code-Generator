@@ -1,0 +1,27 @@
+{
+  "name": "git-auto-form-generator",
+  "version": "1.0.0",
+  "description": "deneme",
+  "main": "main.js",
+  "scripts": {
+    "start:windows": "start http://localhost:8080 && node main.js",
+    "start:linux": "xdg-open http://localhost:8080 && node main.js",
+    "start:mac": "open http://localhost:8080 && node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MhmmdTuran/DevExpress-Auto-Code-Generator.git"
+  },
+  "keywords": [
+    "deneme"
+  ],
+  "author": "deneme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MhmmdTuran/DevExpress-Auto-Code-Generator/issues"
+  },
+  "homepage": "https://github.com/MhmmdTuran/DevExpress-Auto-Code-Generator#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
