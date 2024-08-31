@@ -28,7 +28,7 @@ function generateCode() {
       (dataResult)="---.${field} = $event?.---"
       [controlName]="'---'"
       [labelText]="'${label}'"
-      [code]="selectedRow?.${field}"
+      [code]="---?.${field}"
       [labelMode]="labelMode"
       [isReadOnly]="!editMode && state !== 'New'"
       ></dk-ctl-gen-kontrol>\n`;
