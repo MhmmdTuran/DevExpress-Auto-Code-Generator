@@ -43,9 +43,9 @@ function generateCode() {
       `[validationRules]="validationRulesMap['${field}']"` +
       lookup.slice(-20);
     controller =
-      controller.slice(0, -24) +
+      controller.slice(0, -22) +
       `[validationRules]="validationRulesMap['${field}']"` +
-      controller.slice(-24);
+      controller.slice(-22);
   }
 
   var itemCode = openTag + closeTag;
@@ -53,7 +53,6 @@ function generateCode() {
   var controllerCode = openTag + controller + closeTag;
 
   if (document.getElementById("stringOption").checked) {
-    console.log(document.getElementById("stringOption").checked);
   } else if (document.getElementById("numberOption").checked) {
     itemCode =
       itemCode.slice(0, -11) +
