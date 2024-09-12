@@ -43,9 +43,9 @@ function generateCode() {
       `[validationRules]="validationRulesMap['${field}']"` +
       lookup.slice(-20);
     controller =
-      controller.slice(0, -22) +
+      controller.slice(0, -23) +
       `[validationRules]="validationRulesMap['${field}']"` +
-      controller.slice(-22);
+      controller.slice(-23);
   }
 
   var itemCode = openTag + closeTag;
@@ -56,9 +56,9 @@ function generateCode() {
     console.log(document.getElementById("stringOption").checked);
   } else if (document.getElementById("numberOption").checked) {
     itemCode =
-      itemCode.slice(0, -1) +
+      itemCode.slice(0, -11) +
       `[editorType]="'dxNumberBox'"` +
-      itemCode.slice(-1);
+      itemCode.slice(-11);
     lookup =
       lookup.slice(0, -20) +
       `\n\t[valueExpr]="'kod'"` +
