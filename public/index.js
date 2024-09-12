@@ -43,9 +43,9 @@ function generateCode() {
       `[validationRules]="validationRulesMap['${field}']"` +
       lookup.slice(-20);
     controller =
-      controller.slice(0, -23) +
+      controller.slice(0, -24) +
       `[validationRules]="validationRulesMap['${field}']"` +
-      controller.slice(-23);
+      controller.slice(-24);
   }
 
   var itemCode = openTag + closeTag;
