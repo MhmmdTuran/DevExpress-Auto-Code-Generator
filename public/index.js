@@ -63,7 +63,6 @@ function generateCode() {
       lookup.slice(0, -20) +
       `\n\t[valueExpr]="'kod'"` +
       lookup.slice(-20);
-      lookup = lookup.replace("$event?.value", "$event")
     controller =
       controller.slice(0, -23) + `\n[type]="'number'"` + controller.slice(-23);
   } else if (document.getElementById("dateOption").checked) {
