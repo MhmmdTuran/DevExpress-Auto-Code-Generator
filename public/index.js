@@ -31,7 +31,7 @@ function generateCode() {
       [code]="---?.${field}"
       [labelMode]="labelMode"
       [isReadOnly]="!editMode && state !== 'New'"
-      ></dk-ctl-gen-kontrol>\n`;
+      ></dk-ctl-gen-kontrol>`;
 
   if (document.getElementById("validationCheckbox").checked) {
     openTag =
