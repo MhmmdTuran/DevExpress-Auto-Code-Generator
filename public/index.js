@@ -61,20 +61,20 @@ function generateCode() {
       itemCode.slice(-1);
     lookup =
       lookup.slice(0, -20) +
-      `\n\t[type]="'number'"\n\t[valueExpr]="'kod'"\n\t` +
+      `\n\t[valueExpr]="'kod'"` +
       lookup.slice(-20);
       lookup = lookup.replace("$event?.value", "$event")
     controller =
-      controller.slice(0, -22) + `\n[type]="'number'"` + controller.slice(-22);
+      controller.slice(0, -23) + `\n[type]="'number'"` + controller.slice(-23);
   } else if (document.getElementById("dateOption").checked) {
     openTag =
-      openTag.slice(0, -1) + `[editorType]="'dxDateBox'"` + openTag.slice(-1);
+      openTag.slice(0, -1) + `\n\t[editorType]="'dxDateBox'"` + openTag.slice(-1);
   } else if (document.getElementById("textAreaOption".checked)) {
     openTag =
-      openTag.slice(0, -1) + `[editorType]="'dxTextArea'"` + openTag.slice(-1);
+      openTag.slice(0, -1) + `\n\t[editorType]="'dxTextArea'"` + openTag.slice(-1);
   }
 
-  itemCode = openTag + closeTag;
+  itemCode = itemCode;
   lookupCode = openTag + lookup + closeTag;
   controllerCode = openTag + controller + closeTag;
 
