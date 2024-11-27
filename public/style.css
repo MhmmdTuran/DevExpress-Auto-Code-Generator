@@ -1,4 +1,4 @@
-.form-group {
+/* .form-group {
   margin-bottom: 15px;
 }
 .form-group label {
@@ -22,29 +22,29 @@
 }
 
 .generateButton {
-  background-color: #007bff; /* Butonun arka plan rengi */
-  color: white; /* Yazı rengi */
-  border: none; /* Kenarlık kaldırıldı */
-  border-radius: 10px; /* Kenar yuvarlama */
-  padding: 10px 20px; /* İç boşluk */
-  font-size: 16px; /* Yazı boyutu */
-  cursor: pointer; /* Fare işareti değişir */
-  transition: background-color 0.3s, transform 0.2s; /* Yumuşak geçiş efektleri */
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  border-radius: 10px; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, transform 0.2s; 
   height: 70%;
 }
 
 .generateButton:hover {
-  background-color: #0056b3; /* Hover durumunda arka plan rengi */
+  background-color: #0056b3; 
 }
 
 .generateButton:active {
-  background-color: #004494; /* Tıklanma durumunda arka plan rengi */
-  transform: scale(0.98); /* Tıklanma efektini göstermek için butonu küçültür */
+  background-color: #004494; 
+  transform: scale(0.98); 
 }
 
 .generateButton:focus {
-  outline: none; /* Odaklanma durumunda kenarlığı kaldırır */
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Odaklanma durumunda hafif bir gölge efekti */
+  outline: none; 
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); 
 }
 
 
@@ -137,7 +137,7 @@
 
 .textareaItem {
   width: 40vw;
-  padding-right: 40px; /* Butona yer bırakmak için */
+  padding-right: 40px; 
 }
 
 .copyButton {
@@ -172,14 +172,14 @@
 .validation-checkbox{
   height: 16px;
   width: 16px;
-  margin-left: 12px; /* Yaklaşık 3 boşluk karakterine denk gelir */
-  vertical-align: middle; /* Checkbox'ı metinle hizalar */
+  margin-left: 12px; 
+  vertical-align: middle; 
 }
 
 .radio-group {
   display: flex;
-  gap: 30px; /* Butonlar arasında boşluk bırakır */
-  align-items: center; /* Butonları ortalar */
+  gap: 30px; 
+  align-items: center; 
   margin-inline: 20px;
 }
 
@@ -189,4 +189,70 @@
   align-items: center;
 }
 
+ */
 
+
+ .container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  height: 88vh;
+ }
+
+ .input-area{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 8px 8px 0 8px;
+ }
+
+  .output-area{
+    width: 60%;
+    position: relative;
+  }
+
+  .copyButton {
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    font-size: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .copyButton:hover {
+    background-color: #0056b3;
+  }
+
+  .generateButton {
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
+  }
+  
+  .generateButton:hover {
+    background-color: #0056b3; 
+  }
+  
+  .generateButton:active {
+    background-color: #004494; 
+    transform: scale(0.98); 
+  }
+  
+  .generateButton:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); 
+  }

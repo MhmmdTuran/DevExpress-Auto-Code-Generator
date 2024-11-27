@@ -7,89 +7,108 @@ function copyText(textareaId) {
 }
 
 function generateCode() {
-  const field = document.getElementById("field").value;
-  const label = document.getElementById("label").value;
+  var generatedCode = "";
 
-  var openTag = `<dxi-item dataField="${field}" [label]="{ text: '${label}' }">`;
-  const closeTag = `\n</dxi-item>`;
+  const formData = document.getElementById("formData").value;
 
-  
+  const formTagOpen = `<dx-form
+class="form"
+[(formData)]="${formData}"
+[labelMode]="labelMode"
+[labelLocation]="labelLocation">`;
 
-  var lookup = `\n\t<dk-ct-gen-lookup
-    [selectedValue]="---?.${field}"
-    (valueChange)="---.${field} = $event?.value"
-    [lookUpType]="'---'"
-    [labelMode]="labelMode"
-    [label]="'${label}'"
-    [readOnly]="!editMode && state !== 'New'"
-    ></dk-ct-gen-lookup>`;
+  const formTagClose = `\n</dx-form>`;
 
-  var controller = `<dk-ctl-gen-kontrol
-      (dataResult)="---.${field} = $event?.---"
-      [controlName]="'---'"
-      [labelText]="'${label}'"
-      [code]="---?.${field}"
-      [labelMode]="labelMode"
-      [isReadOnly]="!editMode && state !== 'New'"
-      ></dk-ctl-gen-kontrol>`;
+  const dlist = JSON.parse(document.getElementById("dlist").value);
 
-  if (document.getElementById("validationCheckbox").checked) {
-    openTag =
-      openTag.slice(0, -1) +
-      `[validationRules]="validationRulesMap['${field}']"` +
-      openTag.slice(-1);
-    lookup =
-      lookup.slice(0, -20) +
-      `[validationRules]="validationRulesMap['${field}']"` +
-      lookup.slice(-20);
-    controller =
-      controller.slice(0, -22) +
-      `[validationRules]="validationRulesMap['${field}']"` +
-      controller.slice(-22);
+  // console.log(dlist.dListMetadata.fields[0])
+
+  generatedCode += formTagOpen;
+
+  dlist.dListMetadata.fields.forEach((field) => {
+    if (field.dataField.includes(".")) {
+      return;
+    } else if (field.lookup) {
+      generatedCode += generateLookup(field, formData);
+    } else {
+      generatedCode += generateNormalItem(field);
+    }
+  });
+
+  generatedCode += formTagClose;
+
+  document.getElementById("code-output").value = generatedCode;
+}
+
+function generateNormalItem(field) {
+  if (field.dataType == "string" && field.dataLength > 200) {
+    return `\n
+    <dxi-item
+    dataField="${field.dataField}"
+    [label]="{ text: '${field.labelText}' }"
+    [validationRules]="validationRulesMap['${field.dataField}']"
+    editorType="dxTextArea"
+    ></dxi-item>`;
+  } else if (field.dataType == "string") {
+    return `\n
+    <dxi-item
+    dataField="${field.dataField}"
+    [label]="{ text: '${field.labelText}' }"
+    [validationRules]="validationRulesMap['${field.dataField}']"
+    ></dxi-item>`;
+  } else if (field.dataType == "number") {
+    return `\n
+    <dxi-item
+    dataField="${field.dataField}"
+    [label]="{ text: '${field.labelText}' }"
+    [validationRules]="validationRulesMap['${field.dataField}']"
+    editorType="dxNumberBox"
+    ></dxi-item>`;
+  } else if (field.dataType == "date") {
+    return `\n
+    <dxi-item
+    dataField="${field.dataField}"
+    [label]="{ text: '${field.labelText}' }"
+    [validationRules]="validationRulesMap['${field.dataField}']"
+    editorType="dxDateBox"
+    ></dxi-item>`;
   }
+}
 
-  var itemCode = openTag + closeTag;
-  var lookupCode = openTag + lookup + closeTag;
-  var controllerCode = openTag + controller + closeTag;
-
-  if (document.getElementById("stringOption").checked) {
-  } else if (document.getElementById("numberOption").checked) {
-    itemCode =
-      itemCode.slice(0, -11) +
-      `[editorType]="'dxNumberBox'"` +
-      itemCode.slice(-11);
-    lookup =
-      lookup.slice(0, -20) +
-      `\n\t[valueExpr]="'kod'"` +
-      lookup.slice(-20);
-    controller =
-      controller.slice(0, -23) + `\n[type]="'number'"` + controller.slice(-23);
-  } else if (document.getElementById("dateOption").checked) {
-    openTag =
-      openTag.slice(0, -1) + `\n\t[editorType]="'dxDateBox'"` + openTag.slice(-1);
-  } else if (document.getElementById("textAreaOption".checked)) {
-    openTag =
-      openTag.slice(0, -1) + `\n\t[editorType]="'dxTextArea'"` + openTag.slice(-1);
-  }
-
-  itemCode = itemCode;
-  lookupCode = openTag + lookup + closeTag;
-  controllerCode = openTag + controller + closeTag;
-
-
-  
-  
-
-  document.getElementById("item-text").innerHTML = itemCode;
-  if (
-    document.getElementById("stringOption").checked ||
-    document.getElementById("numberOption").checked
-  ) {
-    document.getElementById("lookup-text").innerHTML = lookupCode;
-    document.getElementById("controller-text").innerHTML = controllerCode;
+function generateLookup(field, formData) {
+  if (field.dataType == "number") {
+    return `\n
+  <dxi-item
+    dataField="${field.dataField}"
+    [label]="{ text: '${field.labelText}' }"
+    [validationRules]="validationRulesMap['${field.dataField}']"
+    >
+    <dk-ct-gen-lookup
+      [selectedValue]="${formData}?.${field.dataField}"
+      (valueChange)="${formData}.${field.dataField} = $event?.value"
+      [lookUpType]="'${field.lookup}'"
+      [label]="'${field.labelText}'"
+      [readOnly]="!editMode && state !== 'New'"
+      [validationRules]="validationRulesMap['${field.dataField}']"
+      [valueExpr]="'kod'"
+    ></dk-ct-gen-lookup>
+  </dxi-item>`;
   } else {
-    document.getElementById("lookup-text").innerHTML = "";
-    document.getElementById("controller-text").innerHTML = "";
+    return `\n
+      <dxi-item
+      dataField="${field.dataField}"
+      [label]="{ text: '${field.labelText}' }"
+      [validationRules]="validationRulesMap['${field.dataField}']"
+      >
+        <dk-ct-gen-lookup
+          [selectedValue]="${formData}?.${field.dataField}"
+          (valueChange)="${formData}.${field.dataField} = $event?.value"
+          [lookUpType]="'${field.lookup}'"
+          [label]="'${field.labelText}'"
+          [readOnly]="!editMode && state !== 'New'"
+          [validationRules]="validationRulesMap['${field.dataField}']"
+        ></dk-ct-gen-lookup>
+      </dxi-item>`;
   }
 }
 

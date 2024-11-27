@@ -7,9 +7,56 @@
     <title>Auto Code Generator</title>
   </head>
   <body>
-    <form>
+    <div class="container">
+      <div class="input-area">
+        <input
+          style="width: 50%"
+          type="text"
+          id="formData"
+          name="formData"
+          placeholder="[(formData)]"
+          
+        />
+        <button
+          style="width: fit-content;align-self: center;"
+          id="generateCode-btn"
+          class="generateButton"
+          type="button"
+          onclick="generateCode()"
+        >
+          Oluştur
+        </button>
+
+        <div style="height: 100%">
+          <textarea
+            style="height: 100%; width: 100%;resize: none;"
+            type="text"
+            id="dlist"
+            name="dlist"
+            placeholder="dlist"
+          ></textarea>
+        </div>
+      </div>
+      <div class="output-area">
+        <textarea
+          style="height: 100%; width: 100%;resize: none;"
+          id="code-output"
+          placeholder="Kod Buraya Gelecek"
+          spellcheck="false"
+          readonly
+        ></textarea>
+        <button
+          class="copyButton"
+          id="code-output-copyBtn"
+          onclick="copyText('code-output')"
+        >
+          Kopyala
+        </button>
+      </div>
+    </div>
+
+    <!-- <form>
       <div class="container">
-        <!-- İlk input alanı -->
         <div class="form-group">
           <label for="field">Field</label>
           <input
@@ -20,7 +67,6 @@
           />
         </div>
 
-        <!-- İkinci input alanı -->
         <div class="form-group">
           <label for="label">Label</label>
           <input
@@ -124,7 +170,7 @@
         </button>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <script src="index.js"></script>
   </body>
