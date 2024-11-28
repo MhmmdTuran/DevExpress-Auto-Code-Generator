@@ -15,7 +15,8 @@ function generateCode() {
 class="form"
 [(formData)]="${formData}"
 [labelMode]="labelMode"
-[labelLocation]="labelLocation">`;
+[labelLocation]="labelLocation"
+[readOnly]="!editMode && state !== 'New'">`;
 
   const formTagClose = `\n</dx-form>`;
 
